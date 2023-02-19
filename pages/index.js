@@ -1,5 +1,6 @@
 import { Box, Center } from "@chakra-ui/react";
 import { Button, Input, Heading, Text, Link } from "@chakra-ui/react";
+import NextLink from "next/link";
 
 export default function App() {
   return (
@@ -17,7 +18,9 @@ export default function App() {
 
       <Center mt={50} flexDir="column" gap={6}>
         <Button w="300px" h="50px" bg={"gray.200"}></Button>
-        <Text>먼저 둘러볼께요!</Text>
+        <Link href="/main" as={NextLink}>
+          먼저 둘러볼께요!
+        </Link>
       </Center>
     </Box>
   );
