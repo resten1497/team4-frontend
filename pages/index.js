@@ -26,35 +26,43 @@ export default function App() {
       </Center>
 
       <Center mt={37} flexDir="column" gap={5}>
-        <Button
-          w="350px"
-          h="50px"
-          bg={"black"}
-          color={"white"}
-          borderRadius={100}
-        >
-          SIGN IN
-        </Button>
-        <Button
-          w="350px"
-          h="50px"
-          bg={"white"}
-          border={"1px"}
-          borderColor={"#C5C5C5"}
-          borderRadius={100}
-        >
-          SIGN UP
-        </Button>
-        <Button
-          w="350px"
-          h="50px"
-          bg={"white"}
-          border={"1px"}
-          borderColor={"#C5C5C5"}
-          borderRadius={100}
-        >
-          카카오로 시작하기
-        </Button>
+        <Link href="/signin" as={NextLink}>
+          <Button
+            colorScheme="teal"
+            variant="solid"
+            w="350px"
+            h="50px"
+            bg={"black"}
+            color={"white"}
+            borderRadius={100}
+          >
+            SIGN IN
+          </Button>
+        </Link>
+        <Link href="/signup" as={NextLink}>
+          <Button
+            w="350px"
+            h="50px"
+            bg={"white"}
+            border={"1px"}
+            borderColor={"#C5C5C5"}
+            borderRadius={100}
+          >
+            SIGN UP
+          </Button>
+        </Link>
+        <Link href="/" as={NextLink}>
+          <Button
+            w="350px"
+            h="50px"
+            bg={"white"}
+            border={"1px"}
+            borderColor={"#C5C5C5"}
+            borderRadius={100}
+          >
+            카카오로 시작하기
+          </Button>
+        </Link>
 
         {/* <Link href="/main" as={NextLink}>
           먼저 둘러볼께요!
