@@ -64,7 +64,7 @@ export default function App() {
             방만들기
           </Button>
         </Link>
-        <Link>
+        <Link href="/invite">
           <Button
             width={280}
             height={50}
@@ -76,7 +76,7 @@ export default function App() {
             초대 키워드
           </Button>
         </Link>
-        <Link>
+        <Link href="/result">
           <Button
             width={280}
             height={50}

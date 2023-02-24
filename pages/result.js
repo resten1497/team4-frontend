@@ -52,19 +52,20 @@ export default function share() {
           ></Input>
         </Center>
       </Flex>
-
-      <Button
-        marginTop={40}
-        flexDirection={"row"}
-        fontFamily={"DungGeunMo"}
-        boxShadow={"2px 3px 0px black"}
-        border={"2px solid black"}
-        w={280}
-        h={50}
-        background={"#FFA9D2"}
-      >
-        결과보기
-      </Button>
+      <Link href="/resultCheck">
+        <Button
+          marginTop={40}
+          flexDirection={"row"}
+          fontFamily={"DungGeunMo"}
+          boxShadow={"2px 3px 0px black"}
+          border={"2px solid black"}
+          w={280}
+          h={50}
+          background={"#FFA9D2"}
+        >
+          결과보기
+        </Button>
+      </Link>
     </BackWindow>
   );
 }

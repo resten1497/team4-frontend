@@ -38,7 +38,7 @@ export default function share() {
         boxShadow={"2px 3px 0px black"}
         fontFamily={"DungGeunMo"}
       >
-        <Center w={100} textAlign={"center"}>
+        <Center w={100} textAlign={"center"} lineHeight={4}>
           초대
           <br />
           키워드
