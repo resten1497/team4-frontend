@@ -17,7 +17,7 @@ export default function App() {
         <Text textAlign={"center"} fontSize="25" fontFamily={"DungGeunMo"}>
           어느 누가
           <br />
-          밸런스가 맞나?!
+          밸런스가 잘 맞나?!
         </Text>
       </Flex>
       <Text
