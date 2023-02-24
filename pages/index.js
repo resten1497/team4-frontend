@@ -1,73 +1,94 @@
-import { Box, Center } from "@chakra-ui/react";
-import { Button, Input, Heading, Text, Link } from "@chakra-ui/react";
+import {
+  Button,
+  Input,
+  Heading,
+  Text,
+  Link,
+  Flex,
+  extendTheme,
+} from "@chakra-ui/react";
 import Head from "next/head";
 import NextLink from "next/link";
-
+import BackWindow from "../components/BackWindow";
 export default function App() {
   return (
-    <Center
-      maxW="768px"
-      minW="320px"
-      mx="auto"
-      h="100vh"
-      w="400px"
-      flexDir={"column"}
-    >
-      <Center h="30vh" flexDirection={"column"}>
-        <Text fontSize={30} fontWeight={"bold"} lineHeight={10}>
-          자취생존
+    <BackWindow title={false}>
+      <Flex h={"18vh"} justifyContent="center" alignItems="flex-end">
+        <Text textAlign={"center"} fontSize="25" fontFamily={"DungGeunMo"}>
+          어느 누가
+          <br />
+          밸런스가 맞나?!
         </Text>
-        <Text fontSize={70} fontWeight={"bold"} lineHeight={10}>
-          zazone
-        </Text>
-        <Center h={"30vh"}>
-          <Text>프로 자취에 대한 모든 것</Text>
-        </Center>
-      </Center>
-
-      <Center mt={37} flexDir="column" gap={5}>
-        <Link href="/signin" as={NextLink}>
+      </Flex>
+      <Text
+        text
+        margin={"0 auto"}
+        textAlign={"center"}
+        fontWeight={"bold"}
+        fontSize={"60px"}
+        color={"#FFA9D2"}
+        fontFamily={"DungGeunMo"}
+        filter={"drop-shadow(2px 3px 0px #000);"}
+        letterSpacing={"-1"}
+        textShadow={
+          " 2px 0 #000, \
+          -2px 0 #000, \
+          0 1px #000, \
+          0 -3px #000,\
+          1px 1px #000, \
+          -1px -1px #000, \
+          1px -1px #000,\
+           -1px 1px #000;"
+        }
+      >
+        Unbalance
+      </Text>
+      <Flex
+        margin={"0 auto"}
+        width={280}
+        height={200}
+        marginTop={35}
+        fontFamily={"DungGeunMo"}
+        flexDirection="column"
+        justifyContent={"space-around"}
+      >
+        <Link href="/makeRoom">
           <Button
-            colorScheme="teal"
-            variant="solid"
-            w="350px"
-            h="50px"
-            bg={"black"}
-            color={"white"}
-            borderRadius={100}
+            width={280}
+            height={50}
+            background={"white"}
+            border={"2px solid #000"}
+            rounded={false}
+            boxShadow={"2px 2px 0px black"}
           >
-            SIGN IN
+            방만들기
           </Button>
         </Link>
-        <Link href="/signup" as={NextLink}>
+        <Link>
           <Button
-            w="350px"
-            h="50px"
-            bg={"white"}
-            border={"1px"}
-            borderColor={"#C5C5C5"}
-            borderRadius={100}
+            width={280}
+            height={50}
+            background={"white"}
+            border={"2px solid #000"}
+            rounded={false}
+            boxShadow={"2px 2px 0px black"}
           >
-            SIGN UP
+            초대 키워드
           </Button>
         </Link>
-        <Link href="/" as={NextLink}>
+        <Link>
           <Button
-            w="350px"
-            h="50px"
-            bg={"white"}
-            border={"1px"}
-            borderColor={"#C5C5C5"}
-            borderRadius={100}
+            width={280}
+            height={50}
+            background={"white"}
+            border={"2px solid #000"}
+            rounded={false}
+            boxShadow={"2px 2px 0px black"}
           >
-            카카오로 시작하기
+            결과보기
           </Button>
         </Link>
-
-        {/* <Link href="/main" as={NextLink}>
-          먼저 둘러볼께요!
-        </Link> */}
-      </Center>
-    </Center>
+      </Flex>
+    </BackWindow>
   );
 }
