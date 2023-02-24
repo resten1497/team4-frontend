@@ -4,7 +4,6 @@ import Head from "next/head";
 import NextLink from "next/link";
 import Title from "../Title";
 export default function BackWindow({ title, children }) {
-  console.log(title);
   return (
     <Center
       maxW="768px"
