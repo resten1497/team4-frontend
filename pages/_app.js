@@ -2,7 +2,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { Box } from "@chakra-ui/react";
-
+import "../public/static/fonts.css";
 const FadeBox = motion(Box);
 
 function MyApp({ Component, pageProps }) {
