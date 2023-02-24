@@ -16,7 +16,7 @@ export default function share() {
         w={280}
         h={50}
       >
-        <Center w={100} textAlign={"center"}>
+        <Center w={100} textAlign={"center"} lineHeight={4}>
           초대
           <br />
           키워드
@@ -45,7 +45,7 @@ export default function share() {
       >
         <Center>
           <Text fontSize={14} textAlign="center" w={280}>
-            https://www.google.com/핑크_벽돌=a28
+            https://www.google.com/핑크벽돌=a28
           </Text>
         </Center>
       </Flex>
@@ -62,19 +62,20 @@ export default function share() {
       >
         초대 링크 공유하기
       </Button>
-
-      <Button
-        marginTop={30}
-        flexDirection={"row"}
-        fontFamily={"DungGeunMo"}
-        boxShadow={"2px 3px 0px black"}
-        border={"2px solid black"}
-        w={280}
-        h={50}
-        background={"#FFA9D2"}
-      >
-        결과보기
-      </Button>
+      <Link href="/result">
+        <Button
+          marginTop={30}
+          flexDirection={"row"}
+          fontFamily={"DungGeunMo"}
+          boxShadow={"2px 3px 0px black"}
+          border={"2px solid black"}
+          w={280}
+          h={50}
+          background={"#FFA9D2"}
+        >
+          결과보기
+        </Button>
+      </Link>
     </BackWindow>
   );
 }
