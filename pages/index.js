@@ -13,7 +13,7 @@ import BackWindow from "../components/BackWindow";
 export default function App() {
   return (
     <BackWindow title={false}>
-      <Flex h={"18vh"} justifyContent="center" alignItems="flex-end">
+      <Flex h={"15vh"} justifyContent="center" alignItems="flex-end">
         <Text textAlign={"center"} fontSize="25" fontFamily={"DungGeunMo"}>
           어느 누가
           <br />
@@ -47,7 +47,7 @@ export default function App() {
         margin={"0 auto"}
         width={280}
         height={200}
-        marginTop={35}
+        marginTop={15}
         fontFamily={"DungGeunMo"}
         flexDirection="column"
         justifyContent={"space-around"}

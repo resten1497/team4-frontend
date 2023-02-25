@@ -18,10 +18,10 @@ export default function BackWindow({ title, children }) {
         width={350}
         boxShadow={"0.5px 0.5px 10px #000"}
         bg="white"
-        height={"75vh"}
+        height={"65vh"}
         border={"2px solid black"}
         dropShadow={"2px 4px 4px #000000"}
-        overflow={"scroll"}
+        overflowY={"scroll"}
       >
         <Box
           className="header"

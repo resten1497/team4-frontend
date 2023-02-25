@@ -51,7 +51,7 @@ export default function share() {
       </Flex>
 
       <Button
-        marginTop={40}
+        marginTop={10}
         flexDirection={"row"}
         fontFamily={"DungGeunMo"}
         boxShadow={"2px 3px 0px black"}

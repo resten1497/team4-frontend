@@ -5,7 +5,7 @@ import BackWindow from "../components/BackWindow";
 export default function share() {
   return (
     <BackWindow title={true}>
-      <Center fontFamily={"DungGeunMo"} fontSize={20} h={100}>
+      <Center fontFamily={"DungGeunMo"} fontSize={20} h={120}>
         두근두근 과연 결과는 ?
       </Center>
       <Flex
@@ -54,7 +54,7 @@ export default function share() {
       </Flex>
       <Link href="/resultCheck">
         <Button
-          marginTop={40}
+          marginTop={20}
           flexDirection={"row"}
           fontFamily={"DungGeunMo"}
           boxShadow={"2px 3px 0px black"}

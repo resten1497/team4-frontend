@@ -9,7 +9,7 @@ export default function share() {
   return (
     <BackWindow title={true}>
       <Center
-        h={200}
+        h={300}
         flexDir={"column"}
         fontFamily={"DungGeunMo"}
         fontSize={"20"}
@@ -18,7 +18,7 @@ export default function share() {
         <Text>두근두근 과연 결과는?</Text>
       </Center>
       <Button
-        marginTop={40}
+        marginTop={15}
         flexDirection={"row"}
         fontFamily={"DungGeunMo"}
         boxShadow={"2px 3px 0px black"}
@@ -39,7 +39,7 @@ function loading() {
       <Center
         fontFamily={"DungGeunMo"}
         textAlign="center"
-        h={"200"}
+        h={"300"}
         fontSize={"20"}
       >
         아직 어느 누가
