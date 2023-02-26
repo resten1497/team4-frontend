@@ -1,24 +1,12 @@
-import { Box, Center } from "@chakra-ui/react";
+import { Box, Center, pseudoPropNames } from "@chakra-ui/react";
 import { Input, Heading, Text, Link, Flex, Button } from "@chakra-ui/react";
 import { useMediaQuery } from "@chakra-ui/react";
-import { useRef, useState } from "react";
-import BackWindow from "../components/BackWindow";
-import { useMutation } from "react-query";
-import { GameList } from "../recoilState";
+import BackWindow from "../../components/BackWindow";
 import { useRouter } from "next/router";
-import { useRecoilState } from "recoil";
-import axios from "axios";
-async function sendQuestionData(data) {
-  return await axios.post("http://220.85.80.226:18881/room/enter", data, {});
-}
-export default function invite() {
-  const [name, setName] = useState();
-  const [code, setCode] = useState();
-  const { mutate, data, error, isLoading } = useMutation(sendQuestionData, {});
-  const router = useRouter();
-  const [gameList, setGameList] = useRecoilState(GameList);
 
-  //푸른리본
+export default function invite() {
+  const router = useRouter();
+  const { name } = router.query;
   return (
     <BackWindow title={true}>
       <Center fontFamily={"DungGeunMo"} fontSize={20} h={100}>
@@ -33,15 +21,12 @@ export default function invite() {
         fontFamily={"DungGeunMo"}
       >
         <Center w={20} textAlign="center" lineHeight={10}>
-          이름
+          제목
         </Center>
         <Center>
           <Input
             w={200}
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
-            placeholder="이름을 입력하세요"
+            placeholder="제목을 입력하세요"
             border={"0px"}
             rounded={false}
           ></Input>
@@ -65,12 +50,10 @@ export default function invite() {
         <Center>
           <Input
             w={200}
-            placeholder="키워드을 입력하세요"
+            placeholder="제목을 입력하세요"
             border={"0px"}
             rounded={false}
-            onChange={(e) => {
-              setCode(e.target.value);
-            }}
+            value={name}
           ></Input>
         </Center>
       </Flex>
@@ -84,21 +67,6 @@ export default function invite() {
         w={280}
         h={50}
         background={"#88ED80"}
-        onClick={() => {
-          console.log(name, code);
-          mutate(
-            { name: name, code: code },
-            {
-              onSuccess: (data) => {
-                console.log(data);
-                if (data.data.statusCode == 200) {
-                  setGameList(data.data.result);
-                  router.push("/game");
-                }
-              },
-            }
-          );
-        }}
       >
         입장하기
       </Button>

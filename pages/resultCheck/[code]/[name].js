@@ -1,11 +1,17 @@
 import { Box, Center } from "@chakra-ui/react";
 import { Input, Heading, Text, Link, Flex, Button } from "@chakra-ui/react";
 import { useMediaQuery } from "@chakra-ui/react";
-import imageURL from "../public/static/images/cat.gif";
-import BackWindow from "../components/BackWindow";
+import imageURL from "../../../public/static/images/cat.gif";
+import BackWindow from "../../../components/BackWindow";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
+import { useQuery } from "react-query";
+import axios from "axios";
 
-export default function share() {
+function share() {
+  console.log(code, name);
+
   return (
     <BackWindow title={true}>
       <Center
@@ -33,9 +39,9 @@ export default function share() {
   );
 }
 
-function loading() {
+function Loading() {
   return (
-    <>
+    <BackWindow title={true}>
       <Center
         fontFamily={"DungGeunMo"}
         textAlign="center"
@@ -61,6 +67,25 @@ function loading() {
       >
         LOADING...
       </Center>
-    </>
+    </BackWindow>
   );
+}
+export default function MyComponent() {
+  const router = useRouter();
+  const { code, name } = router.query;
+  const { data, isLoading, isError } = useQuery(
+    "myData",
+    async () => {
+      const response = await axios(
+        "http://220.85.80.226:18881/room/result?name=" + name + "&code=" + code
+      );
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    },
+    { refetchInterval: 300000 }
+  ); // 5분(300초)마다 호출
+
+  return <Loading></Loading>;
 }

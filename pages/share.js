@@ -2,7 +2,22 @@ import { Box, Center } from "@chakra-ui/react";
 import { Input, Heading, Text, Link, Flex, Button } from "@chakra-ui/react";
 import { useMediaQuery } from "@chakra-ui/react";
 import BackWindow from "../components/BackWindow";
+import { useRecoilState } from "recoil";
+import { nameState } from "../recoilState";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+async function sendQuestionData(data) {
+  return await axios.post("http://220.85.80.226:18881/room", data, {});
+}
+
 export default function share() {
+  const router = useRouter();
+  const [name, setName] = useRecoilState(nameState);
+  useEffect(() => {
+    if (name === "") {
+      router.push("/");
+    }
+  });
   return (
     <BackWindow title={true}>
       <Center fontFamily={"DungGeunMo"} fontSize={20} h={100}>
@@ -29,7 +44,7 @@ export default function share() {
             color={"#fff"}
             fontSize={20}
           >
-            핑크벽돌
+            {name}
           </Center>
         </Center>
       </Flex>

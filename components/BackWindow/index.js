@@ -3,7 +3,7 @@ import { Button, Input, Heading, Text, Link, Flex } from "@chakra-ui/react";
 import Head from "next/head";
 import NextLink from "next/link";
 import Title from "../Title";
-export default function BackWindow({ title, children }) {
+export default function BackWindow({ title, game, children }) {
   return (
     <Center
       maxW="768px"
@@ -58,6 +58,11 @@ export default function BackWindow({ title, children }) {
         </Box>
         <Center flexDirection={"column"}>{children}</Center>
       </Box>
+      {game ? (
+        <Text paddingTop={30} fontFamily={"DungGeunMo"}>
+          클릭 하면 넘어가니 신중하게 눌러주세요!
+        </Text>
+      ) : null}
     </Center>
   );
 }
