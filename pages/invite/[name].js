@@ -4,7 +4,7 @@ import { useMediaQuery } from "@chakra-ui/react";
 import BackWindow from "../../components/BackWindow";
 import { useRouter } from "next/router";
 
-export default function invite() {
+export default function InviteName() {
   const router = useRouter();
   const { name } = router.query;
   return (

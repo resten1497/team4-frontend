@@ -10,7 +10,7 @@ async function sendQuestionData(data) {
   return await axios.post("http://220.85.80.226:18881/room", data, {});
 }
 
-export default function share() {
+export default function Share() {
   const router = useRouter();
   const [name, setName] = useRecoilState(nameState);
   useEffect(() => {

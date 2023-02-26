@@ -26,6 +26,7 @@ export default function Game() {
       {}
     );
   }
+
   useEffect(() => {
     setGameResult({ ...gameResult, name: gameList.name, code: gameList.code });
   }, []);
@@ -59,6 +60,7 @@ export default function Game() {
       {gameList.questions.map((question, index) => {
         return (
           <motion.div
+            key={index}
             initial={{ opacity: 0 }}
             animate={{ opacity: index == count ? 1 : 0 }}
             transition={{ duration: 0.5 }}

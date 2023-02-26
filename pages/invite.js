@@ -11,7 +11,7 @@ import axios from "axios";
 async function sendQuestionData(data) {
   return await axios.post("http://220.85.80.226:18881/room/enter", data, {});
 }
-export default function invite() {
+export default function Invite() {
   const [name, setName] = useState();
   const [code, setCode] = useState();
   const { mutate, data, error, isLoading } = useMutation(sendQuestionData, {});

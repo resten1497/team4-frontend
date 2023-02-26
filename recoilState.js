@@ -6,5 +6,10 @@ export const nameState = atom({
 });
 export const GameList = atom({
   key: "gameList",
-  default: {},
+  default: {
+    title: "",
+    name: "",
+    code: "",
+    questions: [],
+  },
 });
