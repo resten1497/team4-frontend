@@ -152,7 +152,7 @@ export default function Game() {
                         setCount(count + 1);
                       }}
                     >
-                      {question.view1}
+                      {question.view2}
                     </Button>
                   </Flex>
                 </Flex>

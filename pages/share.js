@@ -60,7 +60,7 @@ export default function Share() {
       >
         <Center>
           <Text fontSize={14} textAlign="center" w={280}>
-            https://www.google.com/핑크벽돌=a28
+            http://10.30.3.135:3000/invite/{name}
           </Text>
         </Center>
       </Flex>
@@ -77,7 +77,7 @@ export default function Share() {
       >
         초대 링크 공유하기
       </Button>
-      <Link href="/result">
+      <Link href="/">
         <Button
           marginTop={30}
           flexDirection={"row"}
@@ -88,7 +88,7 @@ export default function Share() {
           h={50}
           background={"#FFA9D2"}
         >
-          결과보기
+          홈으로
         </Button>
       </Link>
     </BackWindow>

@@ -1,8 +1,11 @@
 import { Box, Center } from "@chakra-ui/react";
+import { useState } from "react";
 import { Input, Heading, Text, Link, Flex, Button } from "@chakra-ui/react";
 import { useMediaQuery } from "@chakra-ui/react";
 import BackWindow from "../components/BackWindow";
-export default function share() {
+export default function Share() {
+  const [name, setName] = useState("");
+  const [code, setCode] = useState("");
   return (
     <BackWindow title={true}>
       <Center fontFamily={"DungGeunMo"} fontSize={20} h={120}>
@@ -17,14 +20,17 @@ export default function share() {
         fontFamily={"DungGeunMo"}
       >
         <Center w={20} textAlign="center" lineHeight={10}>
-          제목
+          이름
         </Center>
         <Center>
           <Input
             w={200}
-            placeholder="제목을 입력하세요"
+            placeholder="이름을 입력하세요"
             border={"0px"}
             rounded={false}
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
           ></Input>
         </Center>
       </Flex>
@@ -49,10 +55,13 @@ export default function share() {
             placeholder="제목을 입력하세요"
             border={"0px"}
             rounded={false}
+            onChange={(e) => {
+              setCode(e.target.value);
+            }}
           ></Input>
         </Center>
       </Flex>
-      <Link href="/resultCheck">
+      <Link href={"/result/" + code + "/" + name}>
         <Button
           marginTop={20}
           flexDirection={"row"}

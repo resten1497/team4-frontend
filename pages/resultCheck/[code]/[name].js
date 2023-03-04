@@ -9,9 +9,9 @@ import { useState, useEffect } from "react";
 import { useQuery } from "react-query";
 import axios from "axios";
 
-function share() {
-  console.log(code, name);
-
+function Result() {
+  const router = useRouter();
+  const { code, name } = router.query;
   return (
     <BackWindow title={true}>
       <Center
@@ -20,21 +20,22 @@ function share() {
         fontFamily={"DungGeunMo"}
         fontSize={"20"}
       >
-        <Text>방제목</Text>
         <Text>두근두근 과연 결과는?</Text>
       </Center>
-      <Button
-        marginTop={15}
-        flexDirection={"row"}
-        fontFamily={"DungGeunMo"}
-        boxShadow={"2px 3px 0px black"}
-        border={"2px solid black"}
-        w={280}
-        h={50}
-        background={"#FFA9D2"}
-      >
-        결과보기
-      </Button>
+      <Link href={"/result/" + code + "/" + name}>
+        <Button
+          marginTop={15}
+          flexDirection={"row"}
+          fontFamily={"DungGeunMo"}
+          boxShadow={"2px 3px 0px black"}
+          border={"2px solid black"}
+          w={280}
+          h={50}
+          background={"#FFA9D2"}
+        >
+          결과보기
+        </Button>
+      </Link>
     </BackWindow>
   );
 }
@@ -73,19 +74,19 @@ function Loading() {
 export default function MyComponent() {
   const router = useRouter();
   const { code, name } = router.query;
-  const { data, isLoading, isError } = useQuery(
+  const { data, isLoading, isError, isSuccess } = useQuery(
     "myData",
     async () => {
-      const response = await axios(
+      return await axios(
         "http://220.85.80.226:18881/room/result?name=" + name + "&code=" + code
       );
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      return response.json();
     },
-    { refetchInterval: 300000 }
+    { refetchInterval: 1000 }
   ); // 5분(300초)마다 호출
-
-  return <Loading></Loading>;
+  if (isSuccess) {
+    return <Result></Result>;
+  }
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
 }

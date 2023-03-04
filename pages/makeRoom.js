@@ -35,6 +35,9 @@ export default function Main() {
   const [minute, setMinute] = useState(true);
   const router = useRouter();
 
+  useEffect(() => {
+    console.log(question);
+  }, [question]);
   const { mutate, data, error, isLoading } = useMutation(sendQuestionData, {});
 
   return (
@@ -130,7 +133,7 @@ export default function Main() {
               <Input
                 onChange={(e) => {
                   setMinute(false);
-                  setQuestion({ openMinute: e.target.value });
+                  setQuestion({ ...question, openMinute: e.target.value });
                 }}
                 onClick={() => {
                   setMinute(false);
@@ -154,7 +157,7 @@ export default function Main() {
         밸런스 문제 설정
       </Text>
       <Text fontFamily={"DungGeunMo"} fontSize={14}>
-        (최소 5분명 ~ 15문항)
+        (최대 15문항)
       </Text>
       {question.questions.map((item, index) => {
         return (
@@ -189,7 +192,7 @@ export default function Main() {
                   background={"black"}
                   textAlign={"center"}
                 >
-                  No.{index}
+                  No.{index + 1}
                 </Center>
                 <Flex>
                   <Button
