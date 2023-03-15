@@ -26,13 +26,19 @@ import axios from "axios";
 export default function Result() {
   const router = useRouter();
 
-  const { data, refetch, isSuccess, isError } = useQuery(["data"], async () => {
-    const { name, code } = router.query;
-    const { data } = await axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/room/result?name=${name}&code=${code}`
-    );
-    return data;
-  });
+  const { data, refetch, isSuccess, isError } = useQuery(
+    ["data"],
+    async () => {
+      const { code, name } = router.query;
+
+      const { data } = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_URL}/room/result?name=${name}&code=${code}`
+      );
+      return data;
+    },
+    { enabled: router.isReady }
+  );
+  const { code, name } = router.query;
 
   return (
     <BackWindow title={true}>

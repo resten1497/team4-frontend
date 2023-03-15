@@ -52,11 +52,14 @@ export default function App() {
         flexDirection="column"
         justifyContent={"space-around"}
       >
-        <Link href="/makeRoom">
+        <Link href="/makeRoom" style={{ textDecoration: "none" }}>
           <Button
             width={280}
             height={50}
             background={"white"}
+            style={{
+              "* :hover": "background: #FFA9D2",
+            }}
             border={"2px solid #000"}
             rounded={false}
             boxShadow={"2px 2px 0px black"}

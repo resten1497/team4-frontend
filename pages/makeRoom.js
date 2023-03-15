@@ -214,12 +214,16 @@ export default function Main() {
                     rounded={false}
                     background={"#000"}
                     onClick={() => {
-                      setQuestion({
-                        ...question,
-                        questions: question.questions.filter(
-                          (tags) => item.description !== tags.description
-                        ),
-                      });
+                      if (question.questions.length === 1)
+                        return alert("최소 1개의 문항이 필요합니다.");
+                      else {
+                        setQuestion({
+                          ...question,
+                          questions: question.questions.filter(
+                            (tags) => item.description !== tags.description
+                          ),
+                        });
+                      }
                     }}
                   >
                     -
