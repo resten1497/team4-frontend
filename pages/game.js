@@ -21,12 +21,12 @@ export default function Game() {
   const { mutate, data, error, isLoading } = useMutation(sendQuestionData, {});
   async function sendQuestionData(data) {
     return await axios.post(
-      "http://220.85.80.226:18881/room/complete",
+      `${process.env.NEXT_PUBLIC_API_URL}/room/complete`,
       data,
       {}
     );
   }
-
+  //빨간이슬
   useEffect(() => {
     setGameResult({ ...gameResult, name: gameList.name, code: gameList.code });
   }, []);
@@ -89,7 +89,7 @@ export default function Game() {
                       background={"black"}
                       textAlign={"center"}
                     >
-                      {question.description}
+                      No.{index + 1}
                     </Center>
                   </Center>
                   <Flex
@@ -106,10 +106,11 @@ export default function Game() {
                       fontSize={15}
                       border={"2px solid black"}
                       rounded={"false"}
-                      wordBreak={"keep-all"}
-                      resize={"none"}
+                      overflow={"scroll"}
                       paddingLeft={0}
                       paddingRight={0}
+                      wordBreak={"break-all"}
+                      whiteSpace="normal"
                       onClick={() => {
                         setGameResult({
                           ...gameResult,
@@ -135,7 +136,8 @@ export default function Game() {
                       fontSize={15}
                       border={"2px solid black"}
                       rounded={"false"}
-                      wordBreak={"keep-all"}
+                      wordBreak={"break-all"}
+                      whiteSpace="normal"
                       paddingLeft={0}
                       paddingRight={0}
                       resize={"none"}

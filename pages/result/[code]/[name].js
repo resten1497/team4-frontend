@@ -12,6 +12,7 @@ import { useMediaQuery } from "@chakra-ui/react";
 import BackWindow from "../../../components/BackWindow";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 import {
   Accordion,
@@ -26,26 +27,23 @@ export default function Result() {
   const router = useRouter();
 
   const { data, refetch, isSuccess, isError } = useQuery(["data"], async () => {
+    const { name, code } = router.query;
     const { data } = await axios.get(
-      "http://220.85.80.226:18881/room/result?name=" + name + "&code=" + code
+      `${process.env.NEXT_PUBLIC_API_URL}/room/result?name=${name}&code=${code}`
     );
     return data;
   });
-  if (!router.isReady) return null;
-  const { code, name } = router.query;
 
   return (
     <BackWindow title={true}>
       {isSuccess && router.isReady ? (
-        <>
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
           <Center fontFamily={"DungGeunMo"} h={50} fontSize={30}>
             {data.result.gameResult.title}
           </Center>
-
           <Center fontFamily={"DungGeunMo"} fontSize={20}>
             결과보기
           </Center>
-
           <Accordion allowToggle>
             {data.result.gameResult.results.map((item, index) => {
               return (
@@ -228,8 +226,12 @@ export default function Result() {
           <Center fontFamily={"DungGeunMo"} h={50} marginTop={10}>
             앞으로 더 친해지길...
           </Center>
+        </motion.div>
+      ) : (
+        <>
+          <Center>처리중</Center>
         </>
-      ) : null}
+      )}
     </BackWindow>
   );
 }

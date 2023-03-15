@@ -78,7 +78,7 @@ export default function MyComponent() {
     "myData",
     async () => {
       return await axios(
-        "http://220.85.80.226:18881/room/result?name=" + name + "&code=" + code
+        `${process.env.NEXT_PUBLIC_API_URL}/room/result?name=${name}&code=${code}`
       );
     },
     { refetchInterval: 1000 }

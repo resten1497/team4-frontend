@@ -7,7 +7,7 @@ import { nameState } from "../recoilState";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 async function sendQuestionData(data) {
-  return await axios.post("http://220.85.80.226:18881/room", data, {});
+  return await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/room`, data, {});
 }
 
 export default function Share() {

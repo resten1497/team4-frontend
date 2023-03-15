@@ -18,26 +18,25 @@ import { nameState } from "../recoilState";
 import { useRouter } from "next/router";
 
 async function sendQuestionData(data) {
-  return await axios.post("http://220.85.80.226:18881/room", data, {});
+  return await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/room`, data, {});
 }
+
+const newID = function () {
+  return Math.random().toString(36).substr(2, 5);
+};
+
 export default function Main() {
   const [name, setName] = useRecoilState(nameState);
   const [question, setQuestion] = useState({
     title: "",
     maximum: 10,
     openMinute: null,
-    questions: [{ description: "1", view1: "보기1", view2: "보기1-1" }],
+    questions: [{ description: newID(), view1: "", view2: "" }],
   });
 
-  const [questionList, setQuestionList] = useState([
-    { description: "1", view1: "보기1", view2: "보기1-1" },
-  ]);
   const [minute, setMinute] = useState(true);
   const router = useRouter();
 
-  useEffect(() => {
-    console.log(question);
-  }, [question]);
   const { mutate, data, error, isLoading } = useMutation(sendQuestionData, {});
 
   return (
@@ -70,6 +69,7 @@ export default function Main() {
             placeholder="제목을 입력하세요"
             border={"0px"}
             rounded={false}
+            _focusVisible={{ outline: "none" }}
             onChange={(e) => {
               setQuestion({ ...question, title: e.target.value });
             }}
@@ -85,6 +85,7 @@ export default function Main() {
           </Text>
           <Input
             placeholder="최대 50명"
+            _focusVisible={{ outline: "none" }}
             border={"0px"}
             rounded={false}
             onChange={(e) => {
@@ -122,34 +123,45 @@ export default function Main() {
                 전부 참여시 오픈
               </Button>
             </Box>
-            <Flex
-              flexDir={"row"}
-              w={170}
-              h={50}
-              border={"1px solid black"}
-              bg={minute ? "#fff" : "#FFA9D2"}
-              alignItems={"center"}
-            >
-              <Input
-                onChange={(e) => {
-                  setMinute(false);
-                  setQuestion({ ...question, openMinute: e.target.value });
-                }}
-                onClick={() => {
-                  setMinute(false);
-                }}
-                name={"time"}
-                placeholder="숫자입력"
-                border={"0px"}
-                w={40}
-                fontSize={14}
-                placeho
-                padding={0}
-                rounded={false}
-                textAlign={"right"}
-              ></Input>
-              <Center w={40}> 분후 오픈</Center>
-            </Flex>
+            <label style={{ cursor: "pointer" }}>
+              <Flex
+                flexDir={"row"}
+                w={170}
+                h={50}
+                border={"1px solid black"}
+                bg={minute ? "#fff" : "#FFA9D2"}
+                alignItems={"center"}
+              >
+                <Input
+                  onChange={(e) => {
+                    setMinute(false);
+                    setQuestion({ ...question, openMinute: e.target.value });
+                  }}
+                  onClick={() => {
+                    setMinute(false);
+                  }}
+                  type={"number"}
+                  name={"time"}
+                  placeholder="숫자입력"
+                  border={"0px"}
+                  w={40}
+                  fontSize={14}
+                  outline={"none"}
+                  padding={0}
+                  _focusVisible={{ outline: "none" }}
+                  rounded={false}
+                  css={{
+                    "&:focus": {
+                      outline: "none",
+                      border: "none",
+                      boxShadow: "none",
+                    },
+                  }}
+                  textAlign={"right"}
+                ></Input>
+                <Center w={40}> 분후 오픈</Center>
+              </Flex>
+            </label>
           </Flex>
         </Flex>
       </Flex>
@@ -205,7 +217,7 @@ export default function Main() {
                       setQuestion({
                         ...question,
                         questions: question.questions.filter(
-                          (item) => index + 1 !== Number(item.description)
+                          (tags) => item.description !== tags.description
                         ),
                       });
                     }}
@@ -225,11 +237,9 @@ export default function Main() {
                         ...question,
                         questions: question.questions.concat([
                           {
-                            description: (
-                              question.questions.length + 1
-                            ).toString(),
-                            view1: "보기1",
-                            view2: "보기1-1",
+                            description: newID(),
+                            view1: "",
+                            view2: "",
                           },
                         ]),
                       });
@@ -256,6 +266,9 @@ export default function Main() {
                   wordBreak={"keep-all"}
                   resize={"none"}
                   paddingLeft={0}
+                  _focusVisible={{ outline: "none" }}
+                  _hover={{ outline: "none" }}
+                  value={item.view1}
                   paddingRight={0}
                   textAlign={"center"}
                   onChange={(e_) => {
@@ -278,8 +291,11 @@ export default function Main() {
                   border={"2px solid black"}
                   rounded={"false"}
                   wordBreak={"keep-all"}
+                  _focusVisible={{ outline: "none" }}
+                  _hover={{ outline: "none" }}
                   textAlign={"center"}
                   paddingLeft={0}
+                  value={item.view2}
                   paddingRight={0}
                   resize={"none"}
                   onChange={(e_) => {

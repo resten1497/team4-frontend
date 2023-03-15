@@ -5,7 +5,11 @@ import BackWindow from "../../components/BackWindow";
 import { useRouter } from "next/router";
 import { useMutation } from "react-query";
 async function sendQuestionData(data) {
-  return await axios.post("http://220.85.80.226:18881/room/enter", data, {});
+  return await axios.post(
+    `${process.env.NEXT_PUBLIC_API_URL}/room/enter`,
+    data,
+    {}
+  );
 }
 export default function Invite() {
   const router = useRouter();
@@ -26,12 +30,12 @@ export default function Invite() {
         fontFamily={"DungGeunMo"}
       >
         <Center w={20} textAlign="center" lineHeight={10}>
-          제목
+          이름
         </Center>
         <Center>
           <Input
             w={200}
-            placeholder="제목을 입력하세요"
+            placeholder="이름을 입력하세요"
             border={"0px"}
             onChange={(e) => {
               setName(e.target.value);

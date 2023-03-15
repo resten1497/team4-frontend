@@ -9,7 +9,11 @@ import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import axios from "axios";
 async function sendQuestionData(data) {
-  return await axios.post("http://220.85.80.226:18881/room/enter", data, {});
+  return await axios.post(
+    `${process.env.NEXT_PUBLIC_API_URL}/room/enter`,
+    data,
+    {}
+  );
 }
 export default function Invite() {
   const [name, setName] = useState();
@@ -17,7 +21,6 @@ export default function Invite() {
   const { mutate, data, error, isLoading } = useMutation(sendQuestionData, {});
   const router = useRouter();
   const [gameList, setGameList] = useRecoilState(GameList);
-
   //푸른리본
   return (
     <BackWindow title={true}>

@@ -20,8 +20,13 @@ export default function BackWindow({ title, game, children }) {
         bg="white"
         height={"65vh"}
         border={"2px solid black"}
+        overflowY={"auto"}
         dropShadow={"2px 4px 4px #000000"}
-        overflowY={"scroll"}
+        css={{
+          "-ms-overflow-style": "none;",
+          scrollbarWidth: "none;",
+          "&:-webkit-scrollbar": { display: "none" },
+        }}
       >
         <Box
           className="header"
