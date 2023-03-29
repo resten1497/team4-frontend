@@ -6,10 +6,9 @@ import Title from "../Title";
 export default function BackWindow({ title, game, children }) {
   return (
     <Center
-      maxW="768px"
-      minW="320px"
       mx="auto"
       h="100vh"
+      overflow={"hidden"}
       background="#FFF59E"
       flexDirection={"column"}
     >
@@ -18,7 +17,7 @@ export default function BackWindow({ title, game, children }) {
         width={350}
         boxShadow={"0.5px 0.5px 10px #000"}
         bg="white"
-        height={"65vh"}
+        height={540}
         border={"2px solid black"}
         overflowY={"auto"}
         dropShadow={"2px 4px 4px #000000"}
